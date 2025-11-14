@@ -4,19 +4,11 @@ import { Button } from "../common/Button";
 export function LandingPage() {
   const navigate = useNavigate();
 
-  const handleStartTest = () => {
-    navigate(`/test`);
-  };
-
-  const handleViewPastResults = () => {
-    navigate(`/results`);
-  };
-
   return (
     <div>
       <h3>Cavs Shooting Tracker</h3>
-      <Button onClick={handleStartTest}>Start Test</Button>
-      <Button onClick={handleViewPastResults}>View Past Results</Button>
+      <Button onClick={() => navigate("/test")}>Start Test</Button>
+      <Button onClick={() => navigate("/results")}>View Past Results</Button>
     </div>
   );
 }
