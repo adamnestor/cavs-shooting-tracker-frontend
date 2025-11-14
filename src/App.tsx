@@ -1,12 +1,17 @@
-//import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LandingPage } from "./components/pages/LandingPage";
+import { TestPage } from "./components/pages/TestPage";
+import { ResultsPage } from "./components/pages/ResultsPage";
 
 function App() {
-  //   const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h3>Cavaliers Shooting Tracker</h3>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/test" element={<TestPage />} />
+        <Route path="/results" element={<ResultsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
