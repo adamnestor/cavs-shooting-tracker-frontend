@@ -15,13 +15,16 @@ export function PlayerRow({
   onEdit,
 }: PlayerRowProps) {
   return (
-    <div className="flex items-center gap-4 p-3 border rounded-lg hover:bg-gray-50 transition">
+    <div
+      onClick={onSelect}
+      className="flex items-center gap-4 p-3 border rounded-lg hover:bg-gray-50 transition"
+    >
       <input
         type="radio"
         checked={isSelected}
-        onChange={onSelect}
+        onChange={() => {}}
         disabled={!player.active}
-        className="w-5 h-5 cursor-pointer"
+        className="w-5 h-5 pointer-events-none"
       />
       <div className="flex-1 flex items-center gap-6">
         <span
@@ -43,7 +46,10 @@ export function PlayerRow({
         </span>
       </div>
       <button
-        onClick={onEdit}
+        onClick={(e) => {
+          e.stopPropagation();
+          onEdit();
+        }}
         className="p-2 text-[#041e42] hover:text-[#860038] transition rounded"
       >
         <Pencil size={18} />
