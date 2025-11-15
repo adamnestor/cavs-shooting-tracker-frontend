@@ -1,7 +1,7 @@
 interface ButtonProps {
   onClick?: () => void;
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "success" | "danger";
+  variant?: "primary" | "secondary" | "success" | "danger" | "inactive";
   type?: "button" | "submit" | "reset";
 }
 
@@ -20,6 +20,8 @@ export function Button({
       "bg-[#041e42] text-white hover:bg-[#03172e] border-2 border-transparent hover:border-[#fdbb30] transition",
     success: "bg-green-600 text-white hover:bg-green-700",
     danger: "bg-red-600 text-white hover:bg-red-700",
+    inactive:
+      "bg-gray-300 text-gray-600 cursor-not-allowed border-2 border-transparent",
   };
   return (
     <button
