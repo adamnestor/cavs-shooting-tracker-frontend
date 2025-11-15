@@ -9,7 +9,8 @@ export function Button({
   children,
   variant = "primary",
 }: ButtonProps) {
-  const baseStyles = "px-6 py-3 rounded-lg font-semibold";
+  const baseStyles =
+    "px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg";
   const variantStyles = {
     primary: "bg-blue-600 text-white hover:bg-blue-700",
     secondary: "bg-gray-600 text-white hover:bg-gray-700",
