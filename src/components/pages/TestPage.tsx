@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../common/Button";
 import { StatDisplay } from "../common/StatDisplay";
-import { useNavigate } from "react-router-dom";
+import type { Player } from "../../types/Player";
 
 export function TestPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const player = location.state?.player as Player;
+
   const [AttemptedCount, SetAttemptCount] = useState(0);
   const [MadeCount, SetMadeCount] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [startTime] = useState(new Date().toISOString());
-  const navigate = useNavigate();
+
+  // Redirect if no player selected
+  if (!player) {
+    navigate("/");
+    return null;
+  }
 
   function handleMade() {
     const newCount = AttemptedCount + 1;
@@ -40,6 +50,7 @@ export function TestPage() {
         startTime,
         shots: AttemptedCount,
         made: MadeCount,
+        playerId: player.id,
       }),
     });
     navigate(`/results`);
@@ -50,6 +61,9 @@ export function TestPage() {
       <h1 className="text-[#860038] text-3xl font-bold">
         Three-Point Shooting Test
       </h1>
+      <h3 className="text-[#041e42] text-xl font semibold">
+        Testing: {player.firstName} {player.lastName} #{player.jerseyNumber}
+      </h3>
       <div className="flex gap-4">
         <StatDisplay label="Shots" value={AttemptedCount} />
         <StatDisplay label="Made" value={MadeCount} />
