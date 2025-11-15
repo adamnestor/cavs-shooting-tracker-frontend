@@ -1,13 +1,15 @@
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "success" | "danger";
+  type?: "button" | "submit" | "reset";
 }
 
 export function Button({
   onClick,
   children,
   variant = "primary",
+  type = "button",
 }: ButtonProps) {
   const baseStyles =
     "px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg";
@@ -21,6 +23,7 @@ export function Button({
   };
   return (
     <button
+      type={type}
       onClick={onClick}
       className={`${baseStyles} ${variantStyles[variant]}`}
     >
