@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import type { Test } from "../../types/Test";
 import { Button } from "../common/Button";
+import { TestResultRow } from "../common/TestResultRow";
 
 export function ResultsPage() {
   const [tests, setTests] = useState<Test[]>([]);
@@ -15,21 +16,17 @@ export function ResultsPage() {
 
   return (
     <div>
-      <h2>Past Test Results</h2>
-
-      {tests.length === 0 ? (
-        <p>No tests yet</p>
-      ) : (
-        tests.map((test) => (
-          <div key={test.id}>
-            <p>Date: {new Date(test.startTime).toLocaleDateString()}</p>
-            <p>Time: {new Date(test.startTime).toLocaleTimeString()}</p>
-            <p>Result: {test.made}/100</p>
-          </div>
-        ))
-      )}
-
-      <Button onClick={() => navigate("/")}>Back to Home</Button>
+      <div className="text-center">
+        <h1 className="text-3xl font-bold mt-6 mb-6">Past Test Results</h1>
+      </div>
+      <div className="space-y-4">
+        {tests.map((test) => (
+          <TestResultRow key={test.id} test={test} />
+        ))}
+      </div>
+      <div className="text-center mt-6 mb-6">
+        <Button onClick={() => navigate("/")}>Back to Home</Button>
+      </div>
     </div>
   );
 }
