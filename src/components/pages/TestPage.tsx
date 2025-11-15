@@ -47,7 +47,9 @@ export function TestPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-8">
-      <h1 className="text-3xl font-bold">Three-Point Shooting Test</h1>
+      <h1 className="text-[#860038] text-3xl font-bold">
+        Three-Point Shooting Test
+      </h1>
       <div className="flex gap-4">
         <StatDisplay label="Shots" value={AttemptedCount} />
         <StatDisplay label="Made" value={MadeCount} />

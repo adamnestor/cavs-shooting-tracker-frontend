@@ -12,8 +12,10 @@ export function Button({
   const baseStyles =
     "px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg";
   const variantStyles = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
-    secondary: "bg-gray-600 text-white hover:bg-gray-700",
+    primary:
+      "bg-[#860038] text-white hover:bg-[#6d002d] border-2 border-transparent hover:border-[#fdbb30] transition",
+    secondary:
+      "bg-[#041e42] text-white hover:bg-[#03172e] border-2 border-transparent hover:border-[#fdbb30] transition",
     success: "bg-green-600 text-white hover:bg-green-700",
     danger: "bg-red-600 text-white hover:bg-red-700",
   };
