@@ -1,21 +1,48 @@
 import type { Test } from "../../types/Test";
+import { TrendingUp, TrendingDown, Minus } from "lucide-react";
+import {
+  calculateDuration,
+  calculatePace,
+  calculateTrend,
+} from "../../utils/testCalculations";
 
 interface TestResultRowProps {
   test: Test;
+  lastThreeTests: Test[];
 }
 
-export function TestResultRow({ test }: TestResultRowProps) {
+export function TestResultRow({ test, lastThreeTests }: TestResultRowProps) {
+  const duration = calculateDuration(test.startTime, test.endTime);
+  const pace = calculatePace(test.shots, test.startTime, test.endTime);
+  const trend = calculateTrend(test.made, lastThreeTests);
+
+  const TrendIcon =
+    trend === "up" ? TrendingUp : trend === "down" ? TrendingDown : Minus;
+  const trendColor =
+    trend === "up"
+      ? "text-green-600"
+      : trend === "down"
+      ? "text-red-600"
+      : "text-gray-600";
+
   return (
-    <div className="border rounded-lg p-4 flex justify-between items-center shadow-md hover:shadow-xl hover:border=[#fdbb30] transition-all duration-200 cursor-pointer">
-      <div>
-        <p className=" text-xl font-semibold text-[#6d002d]">
+    <tr className="hover:bg-gray-50 transition">
+      <td className="px-4 py-3 border-b">
+        <p className="font-bold text-[#860038]">
           {test.player.firstName} {test.player.lastName}
         </p>
-        <p className="font-semibold text-[#041e42]">
+        <p className="text-sm text-gray-600">
           {new Date(test.startTime).toLocaleDateString()}
         </p>
-      </div>
-      <p className="text-2xl font-bold text-[#041e42]">{test.made}/100</p>
-    </div>
+      </td>
+      <td className="px-4 py-3 border-b text-center font-bold text-lg">
+        {test.made}/{test.shots}
+      </td>
+      <td className="px-4 py-3 border-b text-center">
+        <TrendIcon className={`inline ${trendColor}`} size={20} />
+      </td>
+      <td className="px-4 py-3 border-b text-center">{duration}</td>
+      <td className="px-4 py-3 border-b text-center">{pace}</td>
+    </tr>
   );
 }
