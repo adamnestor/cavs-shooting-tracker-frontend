@@ -13,6 +13,7 @@ export function TestPage() {
   const [MadeCount, SetMadeCount] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [startTime] = useState(new Date().toISOString());
+  const [endTime, setEndTime] = useState<string | null>(null);
 
   // Redirect if no player selected
   if (!player) {
@@ -27,6 +28,7 @@ export function TestPage() {
 
     if (newCount === 100) {
       setIsComplete(true);
+      setEndTime(new Date().toISOString());
     }
   }
 
@@ -36,6 +38,7 @@ export function TestPage() {
 
     if (newCount === 100) {
       setIsComplete(true);
+      setEndTime(new Date().toISOString());
     }
   }
 
@@ -48,6 +51,7 @@ export function TestPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         startTime,
+        endTime,
         shots: AttemptedCount,
         made: MadeCount,
         playerId: player.id,
