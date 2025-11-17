@@ -27,6 +27,17 @@ export function ResultsPage() {
     ? tests.filter((test) => test.player.id === selectedPlayerId)
     : tests;
 
+  const getLastThreeTests = (
+    currentTestId: number,
+    playerId: number
+  ): Test[] => {
+    return tests
+      .filter(
+        (test) => test.player.id === playerId && test.id !== currentTestId
+      )
+      .slice(0, 3);
+  };
+
   return (
     <div>
       <div className="text-center">
@@ -58,16 +69,58 @@ export function ResultsPage() {
         </label>
       </div>
 
-      {/* Results List */}
-      <div className="max-w-6xl mx-auto px-8 space-y-4">
+      {/* Results Table */}
+      <div className="max-w-6xl mx-auto px-8">
         {filteredTests.length === 0 ? (
           <p className="text-center text-gray-500 py-8">
             No test results found.
           </p>
         ) : (
-          filteredTests.map((test) => (
-            <TestResultRow key={test.id} test={test} />
-          ))
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-gray-100">
+                <th
+                  className="px-4 py-3 text-left border-b font-semibold"
+                  title="Player name and test date"
+                >
+                  Player
+                </th>
+                <th
+                  className="px-4 py-3 text-center border-b font-semibold"
+                  title="Shots made out of total attempts"
+                >
+                  Made/Shots
+                </th>
+                <th
+                  className="px-4 py-3 text-center border-b font-semibold"
+                  title="Comparison to last 3 tests (±5% threshold)"
+                >
+                  Trend
+                </th>
+                <th
+                  className="px-4 py-3 text-center border-b font-semibold"
+                  title="Time to complete test (MM:SS)"
+                >
+                  Duration
+                </th>
+                <th
+                  className="px-4 py-3 text-center border-b font-semibold"
+                  title="Shots per minute"
+                >
+                  Pace
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredTests.map((test) => (
+                <TestResultRow
+                  key={test.id}
+                  test={test}
+                  lastThreeTests={getLastThreeTests(test.id, test.player.id)}
+                />
+              ))}
+            </tbody>
+          </table>
         )}
       </div>
 
