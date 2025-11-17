@@ -10,6 +10,7 @@ export function LandingPage() {
   const navigate = useNavigate();
   const [players, setPlayers] = useState<Player[]>([]);
   const [selectedPlayerId, setSelectedPlayerId] = useState<number | null>(null);
+  const [testType, setTestType] = useState<"standard" | "zone">("standard");
   const [showArchived, setShowAchived] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -59,7 +60,7 @@ export function LandingPage() {
   const handleStartTest = () => {
     const selectedPlayer = players.find((p) => p.id === selectedPlayerId);
     if (selectedPlayer) {
-      navigate("/test", { state: { player: selectedPlayer } });
+      navigate("/test", { state: { player: selectedPlayer, testType } });
     }
   };
 
@@ -75,6 +76,30 @@ export function LandingPage() {
       <h3 className="text-[#041e42] text-xl font-bold">
         Three-Point Shooting Test
       </h3>
+
+      {/* Test Type Selection */}
+      <div className="flex gap-6">
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="radio"
+            value="standard"
+            checked={testType === "standard"}
+            onChange={(e) => setTestType(e.target.value as "standard")}
+            className="w-4 h-4"
+          />
+          <span className="font-semibold">Standard Test (100 shots)</span>
+        </label>
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="radio"
+            value="zone"
+            checked={testType === "zone"}
+            onChange={(e) => setTestType(e.target.value as "zone")}
+            className="w-4 h-4"
+          />
+          <span className="font-semibold">Zone Test (5 zones × 20 shots)</span>
+        </label>
+      </div>
 
       {/* Player Section Section */}
       <div className="w-full max-w-2xl">
