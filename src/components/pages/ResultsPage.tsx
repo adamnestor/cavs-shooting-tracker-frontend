@@ -81,7 +81,7 @@ export function ResultsPage() {
               <tr className="bg-gray-100">
                 <th
                   className="px-4 py-3 text-left border-b font-semibold"
-                  title="Player name and test date"
+                  title="Player name and test date. Click zone tests to see breakdown"
                 >
                   Player
                 </th>
