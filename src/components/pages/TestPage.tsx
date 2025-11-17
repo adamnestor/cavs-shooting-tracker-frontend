@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../common/Button";
 import { StatDisplay } from "../common/StatDisplay";
 import type { Player } from "../../types/Player";
+import API_URL from "../../config/api";
 
 export function TestPage() {
   const location = useLocation();
@@ -46,7 +47,7 @@ export function TestPage() {
     AttemptedCount === 0 ? 0 : Math.round((MadeCount / AttemptedCount) * 100);
 
   const handleSave = async () => {
-    await fetch("http://localhost:3000/api/tests", {
+    await fetch(`${API_URL}/api/tests`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

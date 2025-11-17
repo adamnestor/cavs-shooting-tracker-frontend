@@ -5,6 +5,7 @@ import { PlayerRow } from "../common/PlayerRow";
 import { AddPlayerModal } from "../common/AddPlayerModal";
 import { EditPlayerModal } from "../common/EditPlayerModal";
 import type { Player } from "../../types/Player";
+import API_URL from "../../config/api";
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ export function LandingPage() {
   // Fetch players
   useEffect(() => {
     const url = showArchived
-      ? "http://localhost:3000/api/players?includeArchived=true"
-      : "http://localhost:3000/api/players";
+      ? `${API_URL}/api/players?includeArchived=true`
+      : `${API_URL}/api/players`;
 
     fetch(url)
       .then((res) => res.json())
@@ -29,7 +30,7 @@ export function LandingPage() {
 
   // Add Player
   const handleAddPlayer = async (playerData: Omit<Player, "id" | "active">) => {
-    const response = await fetch("http://localhost:3000/api/players", {
+    const response = await fetch(`${API_URL}/api/players`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(playerData),
@@ -40,7 +41,7 @@ export function LandingPage() {
 
   // Update player
   const handleUpdatePlayer = async (updatedPlayer: Player) => {
-    await fetch(`http://localhost:3000/api/players/${updatedPlayer.id}`, {
+    await fetch(`${API_URL}/api/players/${updatedPlayer.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedPlayer),

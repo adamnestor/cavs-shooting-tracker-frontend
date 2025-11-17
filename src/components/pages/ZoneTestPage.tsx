@@ -4,6 +4,7 @@ import { Button } from "../common/Button";
 import { StatDisplay } from "../common/StatDisplay";
 import type { Player } from "../../types/Player";
 import type { Zone } from "../../types/ZoneStat";
+import API_URL from "../../config/api";
 
 const ZONES: Zone[] = [
   "Left Corner",
@@ -97,7 +98,7 @@ export function ZoneTestPage() {
       shots: zoneData[zone].shots,
     }));
 
-    await fetch("http://localhost:3000/api/tests", {
+    await fetch(`${API_URL}/api/tests`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

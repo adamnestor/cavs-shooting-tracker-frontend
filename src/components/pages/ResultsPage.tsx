@@ -4,6 +4,7 @@ import type { Test } from "../../types/Test";
 import type { Player } from "../../types/Player";
 import { Button } from "../common/Button";
 import { TestResultRow } from "../common/TestResultRow";
+import API_URL from "../../config/api";
 
 export function ResultsPage() {
   const [tests, setTests] = useState<Test[]>([]);
@@ -13,12 +14,12 @@ export function ResultsPage() {
 
   useEffect(() => {
     // Fetch tests
-    fetch("http://localhost:3000/api/tests")
+    fetch(`${API_URL}/api/tests`)
       .then((res) => res.json())
       .then((data) => setTests(data));
 
     // Fetch players for filter dropdown
-    fetch("http://localhost:3000/api/players")
+    fetch(`${API_URL}/api/players`)
       .then((res) => res.json())
       .then((data) => setPlayers(data));
   }, []);
