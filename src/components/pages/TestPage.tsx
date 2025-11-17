@@ -75,10 +75,10 @@ export function TestPage() {
       </div>
       {!isComplete ? (
         <div className="flex gap-4">
-          <Button onClick={handleMade} variant="success">
+          <Button onClick={handleMade} variant="success" size="large">
             Made
           </Button>
-          <Button onClick={handleMiss} variant="danger">
+          <Button onClick={handleMiss} variant="danger" size="large">
             Miss
           </Button>
         </div>

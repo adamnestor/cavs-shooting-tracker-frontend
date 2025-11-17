@@ -60,7 +60,8 @@ export function LandingPage() {
   const handleStartTest = () => {
     const selectedPlayer = players.find((p) => p.id === selectedPlayerId);
     if (selectedPlayer) {
-      navigate("/test", { state: { player: selectedPlayer, testType } });
+      const path = testType === "zone" ? "/test/zone" : "/test";
+      navigate(path, { state: { player: selectedPlayer, testType } });
     }
   };
 
