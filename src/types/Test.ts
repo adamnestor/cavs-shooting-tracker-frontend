@@ -1,4 +1,5 @@
 import type { Player } from "./Player";
+import type { ZoneStat } from "./ZoneStat";
 
 export interface Test {
   id: number;
@@ -8,4 +9,6 @@ export interface Test {
   made: number;
   playerId: number;
   player: Player;
+  testType: string;
+  zoneStats: ZoneStat[];
 }
