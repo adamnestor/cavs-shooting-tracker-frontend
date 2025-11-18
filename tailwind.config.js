@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        cavsHeader: ["Bebas Neue", "sans-serif"],
+        cavsHeader: ["Inter", "sans-serif"],
         cavsBody: ["Inter", "sans-serif"],
       },
     },
