@@ -32,11 +32,13 @@ export function ResultsPage() {
     currentTestId: number,
     playerId: number
   ): Test[] => {
+    const currentTestIndex = tests.findIndex(
+      (test) => test.id === currentTestId
+    );
+
     return tests
-      .filter(
-        (test) => test.player.id === playerId && test.id !== currentTestId
-      )
-      .slice(0, 3);
+      .filter((test) => test.player.id === playerId)
+      .slice(currentTestIndex + 1, currentTestIndex + 4);
   };
 
   return (
