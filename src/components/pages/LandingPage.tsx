@@ -112,7 +112,7 @@ export function LandingPage() {
       <div className="w-full max-w-2xl">
         <div className="bg-white bg-opacity-90 shadow-md rounded-lg p-2 mb-4">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Select a Player:</h2>
+            <h2 className="text-xl font-semibold ml-4">Select a Player:</h2>
             <div className="flex gap-4 items-center">
               <label className="flex items-center gap-2">
                 <input
