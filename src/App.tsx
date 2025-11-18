@@ -6,14 +6,19 @@ import { ResultsPage } from "./components/pages/ResultsPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/test" element={<TestPage />} />
-        <Route path="/test/zone" element={<ZoneTestPage />} />
-        <Route path="/results" element={<ResultsPage />} />
-      </Routes>
-    </BrowserRouter>
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/cavs-floor-background.png')" }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/test" element={<TestPage />} />
+          <Route path="/test/zone" element={<ZoneTestPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

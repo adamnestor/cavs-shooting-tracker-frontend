@@ -17,7 +17,7 @@ export function PlayerRow({
   return (
     <div
       onClick={onSelect}
-      className="flex items-center gap-4 p-3 border rounded-lg hover:bg-gray-50 transition"
+      className="flex items-center gap-4 p-4 rounded-xl bg-white shadow-md hover:shadow-lg transition cursor-pointer"
     >
       <input
         type="radio"
