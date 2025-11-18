@@ -128,22 +128,25 @@ export function ZoneTestPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4 py-8">
-      <h1 className="text-[#860038] text-3xl font-bold">Zone Shooting Test</h1>
-      <p className="text-[#041e42] text-xl font-semibold">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4 py-4">
+      <h1 className="text-[#860038] text-4xl font-cavsHeader font-bold drop-shadow-md">
+        ZONE SHOOTING TEST
+      </h1>
+      <p className="text-[#041e42] text-3xl font-CavsBody font-semibold font-semibold drop-shadow-sm">
         Testing: {player.firstName} {player.lastName} #{player.jerseyNumber}
       </p>
 
       {/* Main Container - Side by Side */}
-      <div className="flex gap-12 items-start w-full px-6 pl-16">
+      <div className="flex gap-12 items-start w-full px-6 pl-16 mt-8">
         {/* Left Side - Court with Zone Buttons */}
         <div
-          className="relative w-[500px] h-[350px] bg-cover flex flex-col items-center justify-start gap-8 p-8 rounded-lg flex-shring-0"
+          className="relative w-[500px] h-[350px] bg-cover flex flex-col items-center justify-start gap-6 p-8 rounded-lg flex-shring-0 shadow-md"
           style={{
             backgroundImage: "url('/nba-half-court.png')",
-            backgroundPosition: "right center",
-            backgroundSize: "cover",
-            backgroundColor: "#f0f0f0",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "450px auto",
+            backgroundColor: "#ffffff",
           }}
         >
           {/* Top row - Top of Key */}
@@ -166,7 +169,7 @@ export function ZoneTestPage() {
             <button
               onClick={() => handleZoneSelect("Left Wing")}
               disabled={isZoneComplete("Left Wing")}
-              className={`px-6 py-4 rounded-lg font-bold transition -ml-12 ${getZoneButtonStyle(
+              className={`px-8 py-2 rounded-lg font-bold transition -ml-10 ${getZoneButtonStyle(
                 "Left Wing"
               )}`}
             >
@@ -179,7 +182,7 @@ export function ZoneTestPage() {
             <button
               onClick={() => handleZoneSelect("Right Wing")}
               disabled={isZoneComplete("Right Wing")}
-              className={`px-6 py-4 rounded-lg font-bold transition -mr-12 ${getZoneButtonStyle(
+              className={`px-8 py-2 rounded-lg font-bold transition -mr-12 ${getZoneButtonStyle(
                 "Right Wing"
               )}`}
             >
@@ -196,7 +199,7 @@ export function ZoneTestPage() {
             <button
               onClick={() => handleZoneSelect("Left Corner")}
               disabled={isZoneComplete("Left Corner")}
-              className={`px-4 py-4 rounded-lg font-bold transition -ml-12 ${getZoneButtonStyle(
+              className={`px-8 py-2 rounded-lg font-bold transition -ml-10 ${getZoneButtonStyle(
                 "Left Corner"
               )}`}
             >
@@ -209,7 +212,7 @@ export function ZoneTestPage() {
             <button
               onClick={() => handleZoneSelect("Right Corner")}
               disabled={isZoneComplete("Right Corner")}
-              className={`px-4 py-4 rounded-lg font-bold transition -mr-12 ${getZoneButtonStyle(
+              className={`px-8 py-2 rounded-lg font-bold transition -mr-12 ${getZoneButtonStyle(
                 "Right Corner"
               )}`}
             >
@@ -234,10 +237,10 @@ export function ZoneTestPage() {
           {/* Active Zone Display */}
           {activeZone && (
             <div className="border-2 border-[#860038] rounded-lg p-3 bg-white">
-              <p className="text-base font-semibold text-[#041e42] mb-1">
+              <p className="text-lg font-semibold font-cavsBody text-[#041e42] mb-1">
                 Active Zone: {activeZone}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-md font-semibold font-cavsBody text-gray-600">
                 Progress: {zoneData[activeZone].made}/
                 {zoneData[activeZone].shots} (
                 {zoneData[activeZone].shots === 0

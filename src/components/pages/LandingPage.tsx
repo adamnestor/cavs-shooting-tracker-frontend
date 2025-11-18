@@ -72,10 +72,10 @@ export function LandingPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-6">
-      <h1 className="text-[#860038] text-5xl font-cavsHeader font-bold mt-6">
+      <h1 className="text-[#860038] text-5xl font-cavsHeader font-bold drop-shadow-md mt-6">
         CAVS SHOOTING TRACKER
       </h1>
-      <h3 className="text-[#041e42] text-3xl font-cavsHeader font-bold">
+      <h3 className="text-[#041e42] text-3xl font-cavsHeader font-bold drop-shadow-md">
         THREE-POINT SHOOTING TEST
       </h3>
 
