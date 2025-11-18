@@ -38,7 +38,7 @@ export function TestResultRow({ test, lastThreeTests }: TestResultRowProps) {
   return (
     <>
       <tr
-        className="bg-white shadow-lg rounded-lg hover:bg-gray-100 transition cursor-pointer"
+        className="bg-white hover:bg-gray-100 transition cursor-pointer"
         onClick={() => isZoneTest && setIsExpanded(!isExpanded)}
       >
         <td className="px-4 py-3 border-b">
