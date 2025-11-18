@@ -7,11 +7,6 @@ export default {
         cavsHeader: ["Bebas Neue", "sans-serif"],
         cavsBody: ["Inter", "sans-serif"],
       },
-      colors: {
-        cavsWine: "#860038",
-        cavsNavy: "#041E42",
-        cavsGold: "#FDBB30",
-      },
     },
   },
   plugins: [],
