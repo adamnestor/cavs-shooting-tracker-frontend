@@ -62,14 +62,14 @@ export function TestPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8">
-      <h1 className="text-[#860038] text-3xl font-bold">
-        Three-Point Shooting Test
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6">
+      <h1 className="text-[#860038] text-4xl font-cavsHeader font-bold drop-shadow-md">
+        THREE-POINT SHOOTING TEST
       </h1>
-      <h3 className="text-[#041e42] text-xl font semibold">
+      <h3 className="text-[#041e42] text-3xl font-cavsHeader font-semibold drop-shadow-sm">
         Testing: {player.firstName} {player.lastName} #{player.jerseyNumber}
       </h3>
-      <div className="flex gap-4">
+      <div className="flex gap-4 mt-8">
         <StatDisplay label="Shots" value={AttemptedCount} />
         <StatDisplay label="Made" value={MadeCount} />
         <StatDisplay label="PCT %" value={`${percentage}%`} />

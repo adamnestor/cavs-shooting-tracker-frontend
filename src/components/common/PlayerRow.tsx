@@ -17,7 +17,7 @@ export function PlayerRow({
   return (
     <div
       onClick={onSelect}
-      className="flex items-center gap-4 p-3 border rounded-lg hover:bg-gray-50 transition"
+      className="flex items-center gap-4 p-4 rounded-xl bg-white shadow-md hover:shadow-lg transition cursor-pointer"
     >
       <input
         type="radio"
@@ -28,19 +28,23 @@ export function PlayerRow({
       />
       <div className="flex-1 flex items-center gap-6">
         <span
-          className={`font-semibold ${
+          className={`font-bold text-lg ${
             !player.active ? "text-gray-400" : "text-[#041e42]"
           }`}
         >
           {player.firstName} {player.lastName}
         </span>
         <span
-          className={`${!player.active ? "text-gray-400" : "text-[#860038]"}`}
+          className={`font-bold text lg ${
+            !player.active ? "text-gray-400" : "text-[#860038]"
+          }`}
         >
           {player.jerseyNumber}
         </span>
         <span
-          className={`${!player.active ? "text-gray-400" : "text-gray-600"}`}
+          className={`font-semibold text-lg ${
+            !player.active ? "text-gray-400" : "text-gray-600"
+          }`}
         >
           {player.position}
         </span>

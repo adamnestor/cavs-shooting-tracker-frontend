@@ -71,16 +71,16 @@ export function LandingPage() {
     : players.filter((p) => p.active);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8">
-      <h1 className="text-[#860038] text-3xl font-bold">
-        Cavs Shooting Tracker
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6">
+      <h1 className="text-[#860038] text-5xl font-cavsHeader font-bold drop-shadow-md mt-6">
+        CAVS SHOOTING TRACKER
       </h1>
-      <h3 className="text-[#041e42] text-xl font-bold">
-        Three-Point Shooting Test
+      <h3 className="text-[#041e42] text-3xl font-cavsHeader font-bold drop-shadow-md">
+        THREE-POINT SHOOTING TEST
       </h3>
 
       {/* Test Type Selection */}
-      <div className="flex gap-6">
+      <div className="flex gap-6 bg-white/80 backdrop-blur-sm px-6 py-4 rounded-xl shadow-md">
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="radio"
@@ -89,8 +89,11 @@ export function LandingPage() {
             onChange={(e) => setTestType(e.target.value as "standard")}
             className="w-4 h-4"
           />
-          <span className="font-semibold">Standard Test (100 shots)</span>
+          <span className="font-semibold text-[#041e42]">
+            Standard Test (100 shots)
+          </span>
         </label>
+
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="radio"
@@ -99,23 +102,27 @@ export function LandingPage() {
             onChange={(e) => setTestType(e.target.value as "zone")}
             className="w-4 h-4"
           />
-          <span className="font-semibold">Zone Test (5 zones × 20 shots)</span>
+          <span className="font-semibold text-[#041e42]">
+            Zone Test (5 zones × 20 shots)
+          </span>
         </label>
       </div>
 
       {/* Player Section Section */}
       <div className="w-full max-w-2xl">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Select a Player:</h2>
-          <div className="flex gap-4 items-center">
-            <label className="flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-[#860038]">
+            Select a Player:
+          </h2>
+          <div className="flex gap-3 items-center">
+            <label className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm">
               <input
                 type="checkbox"
                 checked={showArchived}
                 onChange={(e) => setShowAchived(e.target.checked)}
                 className="w-4 h-4"
               />
-              <span className="text-sm">Show Archived</span>
+              <span className="text-sm font-medium">Show Archived</span>
             </label>
             <Button onClick={() => setShowAddModal(true)} variant="secondary">
               + Add Player

@@ -38,21 +38,21 @@ export function TestResultRow({ test, lastThreeTests }: TestResultRowProps) {
   return (
     <>
       <tr
-        className="hover:bg-gray-50 transition cursor-pointer"
+        className="bg-white hover:bg-gray-100 transition cursor-pointer"
         onClick={() => isZoneTest && setIsExpanded(!isExpanded)}
       >
         <td className="px-4 py-3 border-b">
           <div className="flex items-center gap-2">
             <div>
-              <p className="font-bold text-[#860038]">
+              <p className="text-lg font-cavsBody font-bold text-[#860038]">
                 {test.player.firstName} {test.player.lastName}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-md font-cavsBody font-semibold text-gray-600">
                 {new Date(test.startTime).toLocaleDateString()}
               </p>
             </div>
             {isZoneTest && (
-              <span className="text-xs text-gray-500 ml-2 flex items-center gap-1">
+              <span className="text-md text-gray-500 ml-2 flex items-center gap-1">
                 Zone Results
                 {isExpanded ? (
                   <ChevronUp size={16} />

@@ -42,7 +42,7 @@ export function ResultsPage() {
   return (
     <div>
       <div className="text-center">
-        <h1 className="text-[#860038] text-3xl font-bold mt-6 mb-6">
+        <h1 className="text-[#860038] text-4xl font-bold pt-6 mb-6">
           Past Test Results
         </h1>
       </div>
@@ -50,7 +50,9 @@ export function ResultsPage() {
       {/* Player Filter */}
       <div className="max-w-6xl mx-auto px-8 mb-4">
         <label className="flex items-center gap-3">
-          <span className="font-semibold">Filter by Player:</span>
+          <span className="font-semibold bg-white px-4 py-2 rounded shadow">
+            Filter by Player:
+          </span>
           <select
             value={selectedPlayerId || ""}
             onChange={(e) =>
@@ -125,7 +127,7 @@ export function ResultsPage() {
         )}
       </div>
 
-      <div className="text-center mt-6 mb-6">
+      <div className="text-center pt-6 pb-6">
         <Button onClick={() => navigate("/")}>Back to Home</Button>
       </div>
     </div>
