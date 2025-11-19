@@ -16,14 +16,14 @@ export function Button({
   const baseStyles =
     "rounded-lg font-semibold shadow-md hover:shadow-lg transition";
   const sizeStyles = {
-    normal: "px-6 py-3",
-    large: "px-16 py-8 text-xl font-bold",
+    normal: "px-6 py-3 text-base",
+    large: "px-10 py-5 md:px-16 md:py-8 text-lg md:text-xl font-bold",
   };
   const variantStyles = {
     primary:
-      "bg-[#860038] text-white hover:bg-[#6d002d] border-2 border-transparent hover:border-[#fdbb30]",
+      "bg-[#6F263D] text-white hover:bg-[#8A324E] border-2 border-transparent hover:border-[#FFB300]",
     secondary:
-      "bg-[#041e42] text-white hover:bg-[#03172e] border-2 border-transparent hover:border-[#fdbb30]",
+      "bg-[#121212] text-white hover:bg-[#1E1E1E] border-2 border-transparent hover:border-[#FFB300]",
     success: "bg-green-600 text-white hover:bg-green-700",
     danger: "bg-red-600 text-white hover:bg-red-700",
     inactive:

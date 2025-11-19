@@ -119,33 +119,33 @@ export function ZoneTestPage() {
     const isActive = activeZone === zone;
 
     if (isComplete) {
-      return "bg-gray-300 text-gray-600 border-4 border-[#fdbb30] cursor-not-allowed";
+      return "bg-gray-300 text-gray-600 border-4 border-[#6F263D] cursor-not-allowed";
     }
     if (isActive) {
-      return "bg-[#860038] text-white border-4 border-[#fdbb30] shadow-lg";
+      return "bg-[#6F263D] text-white border-4 border-[#FFB300] shadow-lg";
     }
-    return "bg-[#041e42] text-white border-4 border-transparent hover:border-[#860038] cursor-pointer";
+    return "bg-[#121212] text-white border-4 border-transparent hover:border-[#FFB300] cursor-pointer";
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4 py-4">
-      <h1 className="text-[#860038] text-4xl font-cavsHeader font-bold drop-shadow-md">
+      <h1 className="text-[#6F263D] text-2xl md:text-3xl lg:text-4xl font-cavsHeader font-bold drop-shadow-md text-center">
         ZONE SHOOTING TEST
       </h1>
-      <p className="text-[#041e42] text-3xl font-CavsBody font-semibold font-semibold drop-shadow-sm">
+      <p className="text-[#121212] text-xl md:text-2xl lg:text-3xl font-CavsBody font-semibold drop-shadow-sm text-center mb-8">
         Testing: {player.firstName} {player.lastName} #{player.jerseyNumber}
       </p>
 
       {/* Main Container - Side by Side */}
-      <div className="flex gap-12 items-start w-full px-6 pl-16 mt-8">
+      <div className="flex gap-6 md:gap-8 lg:gap-12 items-start w-full px-4 md:px-6 lg:px-12 mt-8">
         {/* Left Side - Court with Zone Buttons */}
         <div
-          className="relative w-[500px] h-[350px] bg-cover flex flex-col items-center justify-start gap-6 p-8 rounded-lg flex-shring-0 shadow-md"
+          className="relative w-[350px] md:w-[450px] lg:w-[500px] h-[280px] md:h-[320px] lg:h-[350px] bg-cover flex flex-col items-center justify-start gap-4 md:gap-5 lg:gap-6 p-6 md:p-7 lg:p-8 rounded-lg flex-shrink-0 shadow-md"
           style={{
             backgroundImage: "url('/nba-half-court.png')",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            backgroundSize: "450px auto",
+            backgroundSize: "350px auto",
             backgroundColor: "#ffffff",
           }}
         >
@@ -153,72 +153,72 @@ export function ZoneTestPage() {
           <button
             onClick={() => handleZoneSelect("Top of Key")}
             disabled={isZoneComplete("Top of Key")}
-            className={`px-8 py-2 rounded-lg font-bold transition ${getZoneButtonStyle(
+            className={`px-6 md:px-8 py-2 rounded-lg font-bold text-sm md:text-base transition ${getZoneButtonStyle(
               "Top of Key"
             )}`}
           >
             Top of Key
             <br />
-            <span className="text-sm">
+            <span className="text-xs md:text-sm">
               {zoneData["Top of Key"].made}/{zoneData["Top of Key"].shots}
             </span>
           </button>
 
           {/* Middle row - Wings */}
-          <div className="flex gap-40">
+          <div className="flex gap-32 md:gap-36 lg:gap-40">
             <button
               onClick={() => handleZoneSelect("Left Wing")}
               disabled={isZoneComplete("Left Wing")}
-              className={`px-8 py-2 rounded-lg font-bold transition -ml-10 ${getZoneButtonStyle(
+              className={`px-6 md:px-8 py-2 rounded-lg font-bold text-sm md:text-base transition -ml-8 md:-ml-10 ${getZoneButtonStyle(
                 "Left Wing"
               )}`}
             >
               Left Wing
               <br />
-              <span className="text-sm">
+              <span className="text-xs md:text-sm">
                 {zoneData["Left Wing"].made}/{zoneData["Left Wing"].shots}
               </span>
             </button>
             <button
               onClick={() => handleZoneSelect("Right Wing")}
               disabled={isZoneComplete("Right Wing")}
-              className={`px-8 py-2 rounded-lg font-bold transition -mr-12 ${getZoneButtonStyle(
+              className={`px-6 md:px-8 py-2 rounded-lg font-bold text-sm md:text-base transition -mr-10 md:-mr-12 ${getZoneButtonStyle(
                 "Right Wing"
               )}`}
             >
               Right Wing
               <br />
-              <span className="text-sm">
+              <span className="text-xs md:text-sm">
                 {zoneData["Right Wing"].made}/{zoneData["Right Wing"].shots}
               </span>
             </button>
           </div>
 
           {/* Bottom row - Corners */}
-          <div className="flex gap-40">
+          <div className="flex gap-32 md:gap-36 lg:gap-40">
             <button
               onClick={() => handleZoneSelect("Left Corner")}
               disabled={isZoneComplete("Left Corner")}
-              className={`px-8 py-2 rounded-lg font-bold transition -ml-10 ${getZoneButtonStyle(
+              className={`px-6 md:px-8 py-2 rounded-lg font-bold text-sm md:text-base transition -ml-8 md:-ml-10 ${getZoneButtonStyle(
                 "Left Corner"
               )}`}
             >
               Left Corner
               <br />
-              <span className="text-sm">
+              <span className="text-xs md:text-sm">
                 {zoneData["Left Corner"].made}/{zoneData["Left Corner"].shots}
               </span>
             </button>
             <button
               onClick={() => handleZoneSelect("Right Corner")}
               disabled={isZoneComplete("Right Corner")}
-              className={`px-8 py-2 rounded-lg font-bold transition -mr-12 ${getZoneButtonStyle(
+              className={`px-6 md:px-8 py-2 rounded-lg font-bold text-sm md:text-base transition -mr-10 md:-mr-12 ${getZoneButtonStyle(
                 "Right Corner"
               )}`}
             >
               Right Corner
               <br />
-              <span className="text-sm">
+              <span className="text-xs md:text-sm">
                 {zoneData["Right Corner"].made}/{zoneData["Right Corner"].shots}
               </span>
             </button>
@@ -226,9 +226,9 @@ export function ZoneTestPage() {
         </div>
 
         {/* Right Side - Stats and Controls */}
-        <div className="flex flex-col gap-6 items-center flex-1">
-          {/* Overall Stats - Horizontal like TestPage */}
-          <div className="flex gap-4">
+        <div className="flex flex-col gap-6 items-center flex-1 min-w-0">
+          {/* Overall Stats */}
+          <div className="flex flex-col md:flex-row gap-4">
             <StatDisplay label="Shots" value={totalShots} />
             <StatDisplay label="Made" value={totalMade} />
             <StatDisplay label="PCT %" value={`${percentage}%`} />
@@ -236,11 +236,11 @@ export function ZoneTestPage() {
 
           {/* Active Zone Display */}
           {activeZone && (
-            <div className="border-2 border-[#860038] rounded-lg p-3 bg-white">
-              <p className="text-lg font-semibold font-cavsBody text-[#041e42] mb-1">
+            <div className="border-2 border-[#6F263D] rounded-lg p-3 bg-white w-full max-w-sm">
+              <p className="text-base md:text-lg font-semibold font-cavsBody text-[#121212] mb-1">
                 Active Zone: {activeZone}
               </p>
-              <p className="text-md font-semibold font-cavsBody text-gray-600">
+              <p className="text-sm md:text-md font-semibold font-cavsBody text-gray-600">
                 Progress: {zoneData[activeZone].made}/
                 {zoneData[activeZone].shots} (
                 {zoneData[activeZone].shots === 0
@@ -266,7 +266,7 @@ export function ZoneTestPage() {
                 </Button>
               </div>
             ) : (
-              <p className="text-gray-500 italic text-center">
+              <p className="text-gray-500 italic text-center text-sm md:text-base">
                 Select a zone to begin
               </p>
             )

@@ -42,17 +42,17 @@ export function ResultsPage() {
   };
 
   return (
-    <div>
+    <div className="px-4">
       <div className="text-center">
-        <h1 className="text-[#860038] text-4xl font-bold pt-6 mb-6">
+        <h1 className="text-[#6F263D] text-2xl md:text-3xl lg:text-4xl font-bold pt-6 mb-8">
           Past Test Results
         </h1>
       </div>
 
       {/* Player Filter */}
-      <div className="max-w-6xl mx-auto px-8 mb-4">
-        <label className="flex items-center gap-3">
-          <span className="font-semibold bg-white px-4 py-2 rounded shadow">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 mb-6">
+        <label className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <span className="font-semibold bg-white px-4 py-2 rounded shadow whitespace-nowrap">
             Filter by Player:
           </span>
           <select
@@ -62,7 +62,7 @@ export function ResultsPage() {
                 e.target.value ? parseInt(e.target.value) : null
               )
             }
-            className="border rounded px-3 py-2"
+            className="border rounded px-3 py-2 w-full sm:w-auto"
           >
             <option value="">All Players</option>
             {players.map((player) => (
@@ -75,41 +75,41 @@ export function ResultsPage() {
       </div>
 
       {/* Results Table */}
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 overflow-x-auto">
         {filteredTests.length === 0 ? (
           <p className="text-center text-gray-500 py-8">
             No test results found.
           </p>
         ) : (
-          <table className="w-full border-collapse">
+          <table className="w-full border-collapse min-w-[600px]">
             <thead>
               <tr className="bg-gray-100">
                 <th
-                  className="px-4 py-3 text-left border-b font-semibold"
+                  className="px-2 md:px-4 py-3 text-left border-b font-semibold text-sm md:text-base"
                   title="Player name and test date. Click zone tests to see breakdown"
                 >
                   Player
                 </th>
                 <th
-                  className="px-4 py-3 text-center border-b font-semibold"
+                  className="px-2 md:px-4 py-3 text-center border-b font-semibold text-sm md:text-base"
                   title="Shots made out of total attempts"
                 >
                   Made/Shots
                 </th>
                 <th
-                  className="px-4 py-3 text-center border-b font-semibold"
+                  className="px-2 md:px-4 py-3 text-center border-b font-semibold text-sm md:text-base"
                   title="Comparison to last 3 tests (±5% threshold)"
                 >
                   Trend
                 </th>
                 <th
-                  className="px-4 py-3 text-center border-b font-semibold"
+                  className="px-2 md:px-4 py-3 text-center border-b font-semibold text-sm md:text-base"
                   title="Time to complete test (MM:SS)"
                 >
                   Duration
                 </th>
                 <th
-                  className="px-4 py-3 text-center border-b font-semibold"
+                  className="px-2 md:px-4 py-3 text-center border-b font-semibold text-sm md:text-base"
                   title="Shots per minute"
                 >
                   Pace
