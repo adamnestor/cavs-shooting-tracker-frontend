@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "../common/Button";
 import { PlayerRow } from "../common/PlayerRow";
-import { AddPlayerModal } from "../common/AddPlayerModal";
-import { EditPlayerModal } from "../common/EditPlayerModal";
+import { AddPlayerModal } from "../common/modals/AddPlayerModal";
+import { EditPlayerModal } from "../common/modals/EditPlayerModal";
 import type { Player } from "../../types/Player";
 import API_URL from "../../config/api";
 

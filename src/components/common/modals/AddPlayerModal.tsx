@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "./Button";
-import type { Position } from "../../types/Player";
+import { Button } from "../Button";
+import type { Position } from "../../../types/Player";
 
 interface AddPlayerModalProps {
   isOpen: boolean;
