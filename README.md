@@ -117,9 +117,9 @@ src/
 ## 7. Design Decisions
 
 ### Color Scheme
-- **Wine (#860038):** Primary brand color, headlines, player names
-- **Navy (#041e42):** Secondary color, buttons, headers
-- **Gold (#fdbb30):** Accent color, active states, borders
+- **Wine (#6F263D):** Primary brand color, headlines, player names
+- **Soft Black (#121312):** Secondary color, buttons, headers
+- **Gold (#FDBB30):** Accent color, active states, borders
 
 ### UX Principles
 - **Large touch targets:** Optimized for iPad use during practice
