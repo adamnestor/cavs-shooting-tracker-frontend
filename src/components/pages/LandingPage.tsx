@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "../common/Button";
 import { PlayerRow } from "../common/PlayerRow";
-import { AddPlayerModal } from "../common/AddPlayerModal";
-import { EditPlayerModal } from "../common/EditPlayerModal";
+import { AddPlayerModal } from "../common/modals/AddPlayerModal";
+import { EditPlayerModal } from "../common/modals/EditPlayerModal";
 import type { Player } from "../../types/Player";
 import API_URL from "../../config/api";
 
@@ -71,25 +71,25 @@ export function LandingPage() {
     : players.filter((p) => p.active);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-6">
-      <h1 className="text-[#860038] text-5xl font-cavsHeader font-bold drop-shadow-md mt-6">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4 md:px-8">
+      <h1 className="text-[#6F263D] text-3xl md:text-4xl lg:text-5xl font-cavsHeader font-bold drop-shadow-md mt-6 text-center">
         CAVS SHOOTING TRACKER
       </h1>
-      <h3 className="text-[#041e42] text-3xl font-cavsHeader font-bold drop-shadow-md">
+      <h3 className="text-[#121212] text-xl md:text-2xl lg:text-3xl font-cavsHeader font-bold drop-shadow-md text-center mb-8">
         THREE-POINT SHOOTING TEST
       </h3>
 
       {/* Test Type Selection */}
-      <div className="flex gap-6 bg-white/80 backdrop-blur-sm px-6 py-4 rounded-xl shadow-md">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-12 bg-white/80 backdrop-blur-sm px-4 md:px-6 py-4 rounded-xl shadow-md w-full max-w-2xl justify-center">
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="radio"
             value="standard"
             checked={testType === "standard"}
             onChange={(e) => setTestType(e.target.value as "standard")}
-            className="w-4 h-4"
+            className="w-5 h-5 md:w-4 md:h-4"
           />
-          <span className="font-semibold text-[#041e42]">
+          <span className="font-semibold text-[#121212] text-sm md:text-base">
             Standard Test (100 shots)
           </span>
         </label>
@@ -100,27 +100,27 @@ export function LandingPage() {
             value="zone"
             checked={testType === "zone"}
             onChange={(e) => setTestType(e.target.value as "zone")}
-            className="w-4 h-4"
+            className="w-5 h-5 md:w-4 md:h-4"
           />
-          <span className="font-semibold text-[#041e42]">
+          <span className="font-semibold text-[#121212] text-sm md:text-base">
             Zone Test (5 zones × 20 shots)
           </span>
         </label>
       </div>
 
-      {/* Player Section Section */}
-      <div className="w-full max-w-2xl">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-[#860038]">
+      {/* Player Section */}
+      <div className="w-full max-w-2xl px-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3">
+          <h2 className="text-xl md:text-2xl font-bold text-[#6F263D]">
             Select a Player:
           </h2>
-          <div className="flex gap-3 items-center">
+          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center w-full md:w-auto">
             <label className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm">
               <input
                 type="checkbox"
                 checked={showArchived}
                 onChange={(e) => setShowAchived(e.target.checked)}
-                className="w-4 h-4"
+                className="w-5 h-5 md:w-4 md:h-4"
               />
               <span className="text-sm font-medium">Show Archived</span>
             </label>
@@ -150,7 +150,7 @@ export function LandingPage() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full">
           <Button
             onClick={handleStartTest}
             variant={selectedPlayerId ? "primary" : "inactive"}

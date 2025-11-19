@@ -62,20 +62,20 @@ export function TestPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-6">
-      <h1 className="text-[#860038] text-4xl font-cavsHeader font-bold drop-shadow-md">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4">
+      <h1 className="text-[#6F263D] text-2xl md:text-3xl lg:text-4xl font-cavsHeader font-bold drop-shadow-md text-center">
         THREE-POINT SHOOTING TEST
       </h1>
-      <h3 className="text-[#041e42] text-3xl font-cavsHeader font-semibold drop-shadow-sm">
+      <h3 className="text-[#121212] text-xl md:text-2xl lg:text-3xl font-cavsHeader font-semibold drop-shadow-sm text-center mb-8">
         Testing: {player.firstName} {player.lastName} #{player.jerseyNumber}
       </h3>
-      <div className="flex gap-4 mt-8">
+      <div className="flex flex-col sm:flex-row gap-4 mt-8">
         <StatDisplay label="Shots" value={AttemptedCount} />
         <StatDisplay label="Made" value={MadeCount} />
         <StatDisplay label="PCT %" value={`${percentage}%`} />
       </div>
       {!isComplete ? (
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 px-4 mx-auto">
           <Button onClick={handleMade} variant="success" size="large">
             Made
           </Button>
