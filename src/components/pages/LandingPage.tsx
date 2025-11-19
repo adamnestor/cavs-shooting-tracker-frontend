@@ -80,7 +80,7 @@ export function LandingPage() {
       </h3>
 
       {/* Test Type Selection */}
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6 bg-white/80 backdrop-blur-sm px-4 md:px-6 py-4 rounded-xl shadow-md w-full max-w-2xl">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-12 bg-white/80 backdrop-blur-sm px-4 md:px-6 py-4 rounded-xl shadow-md w-full max-w-2xl justify-center">
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="radio"

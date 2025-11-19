@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "./Button";
-import type { Player, Position } from "../../types/Player";
+import { Button } from "../Button";
+import type { Player, Position } from "../../../types/Player";
 
 interface EditPlayerModalProps {
   isOpen: boolean;
@@ -46,10 +46,12 @@ export function EditPlayerModal({
     onClose();
   };
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-96 shadow-xl">
-        <h2 className="text-2xl font-bold text-[#860038] mb-4">Edit Player</h2>
+  return(
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+      <div className="bg-white rounded-lg p-4 md:p-6 w-full max-w-md shadow-xl">
+        <h2 className="text-xl md:text-2xl font-bold text-[#6F263D] mb-4">
+          Edit Player
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-semibold mb-1">
@@ -60,7 +62,7 @@ export function EditPlayerModal({
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
-              className="w-full border rounded px-3 py-2"
+              className="w-full border rounded px-3 py-2 text-base"
             />
           </div>
           <div>
@@ -72,7 +74,7 @@ export function EditPlayerModal({
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
-              className="w-full border rounded px-3 py-2"
+              className="w-full border rounded px-3 py-2 text-base"
             />
           </div>
           <div>
@@ -86,7 +88,7 @@ export function EditPlayerModal({
               required
               min="0"
               max="99"
-              className="w-full border rounded px-3 py-2"
+              className="w-full border rounded px-3 py-2 text-base"
             />
           </div>
           <div>
@@ -94,14 +96,14 @@ export function EditPlayerModal({
             <select
               value={position}
               onChange={(e) => setPosition(e.target.value as Position)}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border rounded px-3 py-2 text-base"
             >
               <option value="Guard">Guard</option>
               <option value="Forward">Forward</option>
               <option value="Center">Center</option>
             </select>
           </div>
-          <div className="flex gap-3 mt-6">
+          <div className="flex flex-col sm:flex-row gap-3 mt-6">
             <Button type="submit">Save Changes</Button>
             <Button onClick={onClose} variant="secondary">
               Cancel
