@@ -118,7 +118,7 @@ src/
 
 ### Color Scheme
 - **Wine (#6F263D):** Primary brand color, headlines, player names
-- **Soft Black (#121312):** Secondary color, buttons, headers
+- **Soft Black (#121212):** Secondary color, buttons, headers
 - **Gold (#FDBB30):** Accent color, active states, borders
 
 ### UX Principles
