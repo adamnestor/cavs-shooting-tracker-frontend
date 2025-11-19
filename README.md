@@ -4,7 +4,7 @@ A React-based web application for tracking three-point shooting test results for
 
 ## 1. Live Demo
 
-**[View Live Application](https://cavs-shooting-tracker-frontend.vercel.app)**
+**[View Live Application](https://cavs-shooting-tracker.vercel.app)**
 
 ## 2. Project Overview
 
