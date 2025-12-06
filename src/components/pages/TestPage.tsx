@@ -53,7 +53,7 @@ export function TestPage() {
     }
 
     // Only redirect if no saved test was resumed AND no player from route
-    if (!location.state?.player) {
+    if (!player) {
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
