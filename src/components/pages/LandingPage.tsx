@@ -5,6 +5,7 @@ import { PlayerRow } from "../common/PlayerRow";
 import { AddPlayerModal } from "../common/modals/AddPlayerModal";
 import { EditPlayerModal } from "../common/modals/EditPlayerModal";
 import type { Player } from "../../types/Player";
+import type { SavedTest } from "../../types/SavedTest";
 import API_URL from "../../config/api";
 
 export function LandingPage() {
@@ -27,6 +28,39 @@ export function LandingPage() {
       .then((res) => res.json())
       .then((data) => setPlayers(data));
   }, [showArchived]);
+
+  // Check for saved test on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("activeTest");
+    if (!saved) return;
+
+    const parsedTest: SavedTest = JSON.parse(saved);
+
+    // Check if stale
+    const savedTime = new Date(parsedTest.timestamp);
+    const hoursDiff =
+      (new Date().getTime() - savedTime.getTime()) / (1000 * 60 * 60);
+
+    if (hoursDiff > 24) {
+      localStorage.removeItem("activeTest");
+      return;
+    }
+
+    const shouldResume = window.confirm(
+      `Resume previous test for ${parsedTest.player.firstName} ${
+        parsedTest.player.lastName
+      }? Progress: ${parsedTest.madeCount || 0}/${
+        parsedTest.attemptedCount || 0
+      } shots`
+    );
+
+    if (shouldResume) {
+      const route = parsedTest.testType === "zone" ? "/test/zone" : "/test";
+      navigate(route, { state: { player: parsedTest.player } });
+    } else {
+      localStorage.removeItem("activeTest");
+    }
+  }, [navigate]);
 
   // Add Player
   const handleAddPlayer = async (playerData: Omit<Player, "id" | "active">) => {
