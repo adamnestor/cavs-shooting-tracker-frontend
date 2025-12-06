@@ -9,18 +9,51 @@ export function TestPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const player = location.state?.player as Player;
+  const MIN_SWIPE_DISTANCE = 50;
 
   const [AttemptedCount, SetAttemptCount] = useState(0);
   const [MadeCount, SetMadeCount] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [startTime] = useState(new Date().toISOString());
   const [endTime, setEndTime] = useState<string | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isSwiping, setIsSwiping] = useState(false);
 
   // Redirect if no player selected
   if (!player) {
     navigate("/");
     return null;
   }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientY);
+    setIsSwiping(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setTouchEnd(e.targetTouches[0].clientY);
+    setIsSwiping(true);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isUpSwipe = distance > MIN_SWIPE_DISTANCE;
+    const isDownSwipe = distance < -MIN_SWIPE_DISTANCE;
+
+    if (isDownSwipe) {
+      handleMade();
+    } else if (isUpSwipe) {
+      handleMiss();
+    }
+
+    setTimeout(() => setIsSwiping(false), 100);
+  };
 
   function handleMade() {
     const newCount = AttemptedCount + 1;
@@ -43,6 +76,16 @@ export function TestPage() {
     }
   }
 
+  const handleMadeClick = () => {
+    if (isSwiping) return;
+    handleMade();
+  };
+
+  const handleMissClick = () => {
+    if (isSwiping) return;
+    handleMiss();
+  };
+
   const percentage =
     AttemptedCount === 0 ? 0 : Math.round((MadeCount / AttemptedCount) * 100);
 
@@ -62,7 +105,12 @@ export function TestPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4">
+    <div
+      className="flex flex-col items-center justify-center min-h-screen gap-6 px-4"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <h1 className="text-[#6F263D] text-2xl md:text-3xl lg:text-4xl font-cavsHeader font-bold drop-shadow-md text-center">
         THREE-POINT SHOOTING TEST
       </h1>
@@ -76,10 +124,10 @@ export function TestPage() {
       </div>
       {!isComplete ? (
         <div className="flex flex-col sm:flex-row gap-4 px-4 mx-auto">
-          <Button onClick={handleMade} variant="success" size="large">
+          <Button onClick={handleMadeClick} variant="success" size="large">
             Made
           </Button>
-          <Button onClick={handleMiss} variant="danger" size="large">
+          <Button onClick={handleMissClick} variant="danger" size="large">
             Miss
           </Button>
         </div>
